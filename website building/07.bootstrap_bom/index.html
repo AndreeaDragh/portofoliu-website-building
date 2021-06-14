@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Object Model - metode Window</title>
+</head>
+<body>
+    <script>
+        //window.alert("Hello World!");
+
+       // window.console.log("Hello World!")
+
+
+       /*var myVariable = "Hello World.";
+        console.log(window.myVariable); */
+
+
+        /*function sayHello() {
+            console.log("Hello World!!")
+        }
+        window.sayHello(); */
+
+
+        //INFORMATII GENERALE DESPRE CAMPUL VIZUAL
+
+        let screenWidth = window.screen.width;              //merge si cu window si fara
+        let screenHeight = screen.height;
+        let availableWidth = screen.availWidth;
+        let availableHeight = screen.availHeight;
+        let colorDepth = screen.colorDepth;
+        
+        console.log("Screen Width: " + screenWidth + "\n" + 
+            "Screen Height: " + screenHeight + "\n" + 
+            "Available screen Width: " + availableWidth + "\n" + 
+            "Available screen Height: " + availableHeight + "\n" +
+            "Color Depth: " + colorDepth + "\n" );
+
+        let href = window.location.href;
+        let hostname = location.hostname;
+        let pathname = location.pathname;
+        let protocol = location.protocol;
+
+        console.log("Href: " + href + "\n" +        //nu am hostname pentru ca nu e gazduit nicaieri
+            "Hostname: " + hostname + "\n" +        //daca era gazduit, la protocol in loc de file, ar fi aparut http sau https
+            "Pathname: " + pathname + "\n" + 
+            "Protocol: " + protocol + "\n");
+
+        //EXEMPLU-1
+        alert("Some very important text!");
+
+        //EXEMPLU-2
+        var userConfirmed = confirm("Your about to unsubscribe from newsletter!");
+
+        if(userConfirmed) {
+            alert("You are unsubscribed!");
+        } else{
+            alert("You are not going to be unsubcribed!")
+        }
+        
+        //EXEMPLU-3
+        var userName = window.prompt("What is your name?", "no name");
+        
+        if(userName !== null){
+            alert ("Hello " + userName);
+        }
+
+    </script>
+</body>
+</html>

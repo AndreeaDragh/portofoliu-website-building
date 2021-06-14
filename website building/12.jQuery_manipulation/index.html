@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery - Content, Structure and Style Manipulation</title>
+    <style>
+        .shown{
+            display: block;
+        }
+        .hidden{
+            display: none;
+        }
+        .red{
+            color: white;
+            background-color: black;
+        }
+        .green{
+            font-size: 20px;
+            font-family: sans-serif;
+            font-style: italic;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="red">EXEMPLU-1 cu text().</p>
+    <h1 id="heading-1">This is heading 1.</h1>
+    <p class="red">EXEMPLU-2 cu text().</p>
+    <ul id="my-list">
+        <li>one</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ul>
+    <p class="red">EXEMPLU-3 cu html().</p>
+    <ul id="my-list2">
+        <li>one</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ul>
+    <p class="red">EXEMPLU-4 cu text sau html().</p>
+    <h1 id="heading-2">This is heading 2.</h1>
+    <h1 id="heading-3">This is heading 3.</h1>
+    <p>Comentariu: daca schimb in codul js, in sectiunea text(), imi va schimba continutul headingului.
+        Daca am de exemplu un strong sau un span in el, mi-l va lua ca atare cu >>, deci daca vreau sa imi
+        apara cu strong sau span etc, trebuie sa folosesc html().
+    </p>
+    <p><strong>Atentie!!!</strong> Daca vreau sa stilizez elemente din text sau html, trebuie sa folosesc doar '', 
+    nu "", ca nu merge.</p>
+    <p class="red">EXEMPLU-5 cu val().</p>
+    <form id="my-form">
+        <input type="text" name="name" id="name">
+        <input type="radio" id="male" name="gender" value="male"> <label for="male" checked>Male</label>
+        <input type="radio" id="female" name="gender" value="female"> <label for="female">Female</label> <br>
+        <input type="checkbox" name="newsletter" id="newsletter" value="yes">
+            <label for="newsletter">I would like to receive a newsletter.</label>
+        <input type="submit" value="Submit">
+    </form>
+    <p>Comentariu:vezi rezultat in consola.</p>
+    <p class="red">EXEMPLU-6 cu css().</p>
+    <p>Rezultatul direct in consola.Daca pun parametru de "64px" de exemplu in css(), atunci imi va modifica singur
+        marimea heading-ului.
+    </p>
+    <p class="red">EXEMPLU-7 cu SHOW/HIDE</p>
+    <p class="green">V1</p>
+    <button id="my-button">Show/Hide</button>
+    <p id="my-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error ab voluptates natus nisi voluptas maxime fuga similique, commodi itaque consequuntur optio soluta corporis unde totam iusto maiores harum, nihil incidunt!</p>
+    <p class="green">V2</p>
+    <button id="my-button2">Show/Hide</button>
+    <p id="my-paragraph2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error ab voluptates natus nisi voluptas maxime fuga similique, commodi itaque consequuntur optio soluta corporis unde totam iusto maiores harum, nihil incidunt!</p>
+    <p class="green">V3</p>
+    <button id="my-button3">Show/Hide</button>
+    <p id="my-paragraph3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error ab voluptates natus nisi voluptas maxime fuga similique, commodi itaque consequuntur optio soluta corporis unde totam iusto maiores harum, nihil incidunt!</p>
+    <p class="green">V4</p>
+    <button id="my-button4">Show/Hide</button>
+    <p id="my-paragraph4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error ab voluptates natus nisi voluptas maxime fuga similique, commodi itaque consequuntur optio soluta corporis unde totam iusto maiores harum, nihil incidunt!</p>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <p class="red">EXEMPLU-8 cu append().</p>
+    <p id="my-paragraph8">This is paragraph original text.</p>
+    <p class="red">EXEMPLU-9 tot cu append(), doar ca adaug alt paragraph. + multe altele.</p>
+    <p id="my-paragraph9">This is paragraph original text.</p>
+    <p id="my-paragraph9-2">This is another original HTML paragraph.</p>
+    <p>Comentariu: <br> -daca vreau la inceput de tot sa apara, in loc de append(), pun <strong>prepend</strong>.
+                   <br> -daca vreau sa alcatuiesc un element nou, de ex un "p" folosesc inceputul exemplului 9 din cod js. + <strong>$("body").append(newParagraph9); </strong> + <--asta
+                    <br> - daca vreau sa schimb ordinea, folosesc <strong>after, before</strong> 
+                    <br> - daca vreau sa sterg, folosesc <strong>remove()</strong> 
+                    <br> - daca vreau sa sterg continutul elementului, dar sa imi apara codul in consola, folosesc <strong> empty ()</strong>.
+    </p>
+    <script>
+    //ex.1
+        let h1Text = $("#heading-1").html();
+        console.log("EX1= " + h1Text);
+    //ex.2
+        let ulText = $("#my-list").text();
+        console.log("EX2= " + ulText);
+    //ex.3
+        let ulText2 = $("#my-list2").html();
+        console.log("EX3= " + ulText2);
+    //ex.4
+        let h1Text2 = $("#heading-2").text("This is the <span>same</span> heading but changed in js. cu text()");
+        let h1Text3 = $ ("#heading-3").html("This is the <span style='color:red'>same</span> heading but changed in js. cu html()");
+        // console.log("EX4= " + h1Text2);
+    //ex.5
+        $("#name").val("default value");
+         
+        $("#my-form").submit(function(e){
+            e.preventDefault();
+            let nameValue = $("#name").val();
+            let selectedGender = $("input[name=gender]:checked").val();
+            let newsletterChecked = $("#newsletter").is(":checked");
+
+            console.log(nameValue);
+            console.log(selectedGender);
+            console.log(newsletterChecked);
+        });
+    //ex.6 
+        let textSize = $("#heading-1").css("font-size", "64px");
+        console.log("EX6= " + "h1 text-size is: " + textSize);
+    //ex.7
+        //V1
+        let myParagraph = $("#my-paragraph");
+        myParagraph.addClass("shown");
+        $("#my-button").click(function(){
+            if(myParagraph.hasClass("shown")){
+                myParagraph.removeClass("shown");
+                myParagraph.addClass("hidden");
+            } else {
+                myParagraph.addClass("shown");
+                myParagraph.removeClass("hidden");
+            }
+        });
+        //V2
+        let myParagraph2 = $("#my-paragraph2");
+            //myParagraph2.addClass("shown"); -nu avem nevoie de asa ceva
+        $("#my-button2").click(function(){
+            myParagraph2.toggleClass("hidden");
+        });
+        //V3
+        let myParagraph3 = $("#my-paragraph3");
+        $("#my-button3").click(function(){
+            if(myParagraph3.css("display") == 'none'){
+                myParagraph3.show();
+            } else {
+                myParagraph3.hide();
+            }
+        });
+        //V4
+        let myParagraph4 = $("#my-paragraph4");
+        $("#my-button4").click(function(){
+            myParagraph4.toggle();
+        })
+    //ex.8
+        $("#my-paragraph8").append("*new text");
+    //ex.9
+        let newParagraph9 = $("<p>This is dinamically created paragraph.</p>");
+        // $("body").append(newParagraph9);  //folosesc asta daca vreau sa introduc p sau alt element dinamic.
+                                            //cu randul de mai jos am stabilit ordinea lui.
+        $("#my-paragraph9").after(newParagraph9);
+        $("#my-paragraph9-2").remove();
+    </script>
+</body>
+
+</html>

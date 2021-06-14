@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Events</title>
+    <style>
+        .v-1{
+            height: 300px;
+            background-color: blueviolet;
+            font-family: sans-serif;
+            font-size: 28px;
+            text-align: center;
+            color: white;
+            line-height: 300px;
+        }
+        .v-2{
+            height: 300px;
+            background-color: greenyellow;
+            font-family: sans-serif;
+            font-size: 28px;
+            text-align: center;
+            color: black;
+            line-height: 300px;
+        }
+        #div5{
+            width: 400px;
+            height: 400px;
+            background-color: palegoldenrod;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #div6{
+            width: 300px;
+            height: 300px;
+            background-color: rgb(179, 191, 204);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #div7{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(209, 149, 194);
+        }
+        .h1{
+            color: red;
+        }
+        .p{
+            color: white;
+            background-color: black;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h1 class="h1">DOM Events</h1>
+<!--EX-1-->
+    <p class="p">EXEMPLU-1</p>
+    <button onclick="alert('You clicked me!')">Click me! V.1</button> 
+    <p>Rezultat: Este o varianta, dar nu se recomanda folosirea acestui exemplu. Se face fara js.</p>
+<!--EX-2--> 
+    <p class="p">EXEMPLU-2</p>
+    <button id="button">Click me! V.2</button>
+    <p>Rezultat: daca folosesc doua comenzi, o va lua in considerare mereu pe ultima. Deci nici varianta asta nu e
+        recomandata.
+    </p>
+<!--EX-3-->
+    <p class="p">EXEMPLU-3</p>
+    <button id="button2">Click me! V.3</button>
+    <p>Rezultat: am folosit metoda addEventListener si am adaugat 2 functii care se deschid una dupa alta 
+        in casuta de alert.
+    </p>
+<!--EX-4-->
+    <p class="p">EXEMPLU-4</p>
+    <button id="button3">Click me! V.4</button>
+    <p>Rezultat: Cu metoda removeEventListener, ma lasa sa accesez butonul o singura data, dupa care e inactiv.</p>
+<!--EX-8-->
+    <p class="p">EXEMPLU-8</p>
+    <div id="my-div" class="v-1">Hello! I'm a div. You can click me! V.8</div>
+    <p>Rezultat: In momentul in care dau click pe caseta mov, imi va aparea o alerta.</p>
+<!--EX.9-->
+    <p class="p">EXEMPLU-9</p>
+    <div id="my-div2" class="v-1">Hello! I'm a div. You can click me! V.9</div>
+    <p>Rezultat: cu comanda "mouseenter" in momentul in care introduci cursorul mouse-ului in casuta, se schimba textul.</p>
+<!--EX.10-->
+    <p class="p">EXEMPLU-10</p>
+    <div id="my-div3" class="v-1">Introdu aicisa cursorul.:D:D:D</div>
+    <p>Rezultat: cu comanda "mousemove" setez de cate ori se misca cursorul. trebuie stabiliti mai multi termeni,
+        vezi in cod js ce conditii extra am mai introdus.
+    </p>
+<!--EX-11-->
+    <p class="p">EXEMPLU-11</p>
+    <div id="my-div4" class="v-2">Tasteaza ceva. Deschide consola ca sa vezi rezultatul.</div>
+    <p>Rezultat: cu comanda "keydown" uita-te la codul js, pentru ca la function trebuie sa pui un atribut special e, 
+        si la fel si la afisarea in consola. </p>
+<!--EX-12-->
+    <p class="p">EXEMPLU-12</p>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <p>Rezultat: Vezi codul js. Dand click pe fiecare item va aparea o alerta pentru fiecare in parte.</p>
+    <h1 class="h1">ANULAREA SI PROPAGAREA EVENIMENTELOR</h1>
+<!--EX-13-->
+    <p class="p">EXEMPLU-13</p>
+    <a href="http://www.link-group.eu/" id="link">Link Group</a>
+    <p>Rezultat: foarte important de retinut <strong>e.preventDefault();</strong>pentru ca impiedica accesarea unui link.</p>
+<!--EX-14-->
+    <p class="p">EXEMPLU-14</p>
+    <div id="div5">
+        <div id="div6">
+            <div id="div7"></div>
+        </div>
+    </div>
+    <p>Rezultat: e prima oara cand folosim elementul "this". Atentie la propietatea addEventListener, atunci cand nu avem
+        setat parametrul "true" se produce efectul <strong>bubbling</strong> adica atunci cand dam click pe elementul din interior
+        va lua ordinea div7->div6->div5, daca setam propietatea <strong>true</strong>, atunci se va activa efectul <strong>capturing</strong>
+         si atunci vom avea div5->div6->div7. <br>
+         Se poate seta si e.target in loc de this.
+        <p><strong>Ca sa opresc evenimentul de propagare (sterge-l din codul js) atunci trebuie sa scriem:
+            <strong>e.stopPropagation();</strong>
+        </strong></p>
+    </p>
+    <script>
+    //JS-EX.2 Ruleaza doar ultima comanda de la displayAnotherMessage
+        var button = document.getElementById("button");
+        button.onclick = displayMessage;
+        button.onclick = displayAnotherMessage;
+            function displayMessage() {
+                alert('Hello there!');
+            };
+            function displayAnotherMessage(){
+                alert('Hello again!');
+            };             
+    //JS-EX.3 Ruleaza ambele variante consecutiv
+        var button2 = document.getElementById("button2");
+        button2.addEventListener("click", displayMessage);
+        button2.addEventListener("click", displayAnotherMessage);
+        function displayMessage() {
+            alert ("Hello there v3!");
+        };
+        function displayAnotherMessage() {
+            alert("Hello again v3!");
+        };
+    //JS-EX.4 Ruleaza doar odata, dupa care dezactiveaza functia "click"
+        var button3 = document.getElementById("button3");
+        button3.addEventListener("click", displayMessage);
+        function displayMessage() {
+            alert('Hello v4 only once!');
+            button3.removeEventListener("click", displayMessage);
+        };
+    //JS-EX.5 Exemplu atunci cand butonul e inserat dupa comanda JS
+        window.addEventListener("load", function(){
+            var button4 = document.getElementById("button4");
+            button4.addEventListener("click", displayMessage);
+        });
+        function displayMessage () {
+            alert('Hello there v5!');
+        };
+    //JS-EX.6 Exemplu exact ca la evenimentul LOAD, doar ca pentru elementele HTML(doar pentru ele)
+        document.addEventListener("DOMContentLoaded", function(){
+            var button5 = document.getElementById("button5");
+            button5.addEventListener("click", displayMessage);
+        });
+        function displayMessage(){
+            alert('Hello there v6!');
+        };
+    //JS-EX.7 Functiile interactive+complete
+        document.addEventListener("readystatechange", function(){
+            if (document.readyState === 'complete'){
+                var button6 = document.getElementById("button6");
+                button6.addEventListener("click", displayMessage);
+            }
+        });
+        function displayMessage() {
+            alert('Hello there v7!');
+        };
+    //JS-EX.8 
+        var div = document.getElementById("my-div");
+        div.addEventListener("click", function(){
+            alert("You have clicked on div!");
+        });
+    //JS-EX.9
+        var div2 = document.getElementById("my-div2");
+        div2.addEventListener("mouseenter", function(){
+            div2.innerHTML = "Tocmai ai introdus cursorul mouse-ului in casuta:). Bafta la invatat."
+        });
+        div2.addEventListener("mouseleave", function(){
+            div2.innerHTML = "Cursorul mouse-ului a parasit casuta. Bafta la cafeluta."
+        });
+    //JS-EX.10
+        var div3 = document.getElementById("my-div3");
+        let eventCounter = 0;
+        div3.addEventListener("mousemove", function(){
+            div3.innerHTML = "Cursolui mouse-ului se misca de atatea ori:" + eventCounter;
+            eventCounter++; 
+        });
+    //JS-EX.11
+        document.addEventListener("keydown", function(e){
+            console.log(e.key);
+        });
+    //JS-EX.12
+        var items = document.getElementsByTagName("li");
+        for (let i = 0; i < items.length; i++) {
+            items[i].addEventListener("click", function(e){
+                alert(e.target.innerHTML);
+            });
+        };
+    //JS-EX.13
+        var link = document.getElementById("link");
+        link.addEventListener("click", function(e){
+            e.preventDefault();
+        });
+    //JS-EX.14
+        var div5 = document.getElementById("div1");
+        var div6 = document.getElementById("div2");
+        var div7 = document.getElementById("div3");
+        div5.addEventListener("click", eventHandler, true);
+        div6.addEventListener("click", eventHandler, true);
+        div7.addEventListener("click", eventHandler, true);
+        function eventHandler() {
+            console.log("Hello from " + this.id);
+            e.stopPropagation();
+        };
+
+    </script>
+    <!--EX-5-->
+        <!--e pus special sub script-->
+        <p class="p">EXEMPLU-5</p>
+        <button id="button4">Click me! V.5</button>
+        <p>Rezultat: atunci cand butonul este inserat sub comanda JS, trebuie sa punem comanda: <br>
+            <strong>window.addEventListener("load", function(){</strong> si in ea sa introducem identificarea id-ului
+            si addEventListener.
+        </p>
+    <!--EX-6-->
+        <!--e pus special sub script-->
+        <p class="p">EXEMPLU-6</p>
+        <button id="button5">Click me! V.6</button>
+        <p>Rezultat: acelasi rezultat ca cel de mai sus, doar ca se foloseste pentru elementele HTML, si se foloseste comanda:
+            <br> <strong>document.addEventListener("DOMContentLoaded", function(){</strong>.
+        </p>
+    <!--EX-7-->
+        <!--e pus special sub script-->
+        <p class="p">EXEMPLU-7</p>
+        <button id="button6">Click me! V.7</button>
+        <p>Rezultat: folosesc propietatea <strong>readystatechange</strong> cand vreau sa vad starea DOM-ului. Cand e 
+            interactive inseamna ca DOM e pregatit, cand folosesc complete inseamna ca si DOM si celalalte resurse sunt
+            incarcate.</p>
+
+    
+
+
+</body>
+</html>

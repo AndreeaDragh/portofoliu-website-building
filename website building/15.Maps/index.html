@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps</title>
+    <link rel="stylesheet" href="css/leaflet.css">
+    <style>
+        #map{
+            height:580px;
+        }
+        #red{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Redactarea hartilor in web.</h1>
+    <p>Pasii pe care trebuie sa ii urmam ca sa ne pregatim fisierul:</p>
+    <ol>
+        <li>Cautat Leaflet pe google.</li>
+        <li>Descarcam cea mai actualizata versiune de leaflet.</li>
+        <li>O despachetam.</li>
+        <li>In folderul proiectului facem 3 foldere:
+            <ol type="a">
+                <li>Images: unde nu putem momentan nimic.</li>
+                <li>CSS: unde punem fisierul .css si folderul cu images din zip. </li>
+                <li>JS: unde punem fisirul JS.</li>
+            </ol>
+        </li>
+        <li>Introduc link catre fisierul css sus in head.</li>
+        <li>Introduc fisierul js in html, acesta trebuie sa fie plasat inainte de orice cod js.</li>
+        <li>Creez un div cu id-ul map, caruia in head trebuie sa ii specific latimea (height).</li>
+        <li>Incep sa creez codul js, care este marcat mai jos in js cu PAS-1:</li>
+            <ol type="a">
+                <li>Fac un var si specific in paranteze numele id-ului. "L." vine de la leaflet.</li>
+                <li>A doua pozitie cu setView, contine doi parametrii. Primul este cu coordonate, al doilea
+                    este cu cat zoom vreau sa fie afisat.
+                </li>
+                <li>Partea cu L.tileLayer trebuie sa o pun ca atare momentan, pentru ca nu stiu ce e. In interiorul
+                    ei este partea cu attribution unde este specificat ceea ce imi doresc sa apara ca text in josul
+                    hartii.
+                </li>
+            </ol>
+        <li> <span id="red">Pas optional, dar mai benefic!!</span> In loc sa fac pasul de la 8b, pot sa fac 
+        ceva mai specific, vezi in cod //SPECIFICATII
+            <ul>
+                <li>E pus in comentariu, pentru ca le-am atribuit la majoritatea conditia false, si nu prea
+                    ar arata ca o harta reala.
+                </li>
+                <li>Am vrut sa surprind toate propietatile(sau cel putin mai multe) pe care le pot folosi la un
+                    proiect mai complex.
+                </li>
+                <li>Trebuie sa fie parte componenta a lui L.map('map', {..specificatii..});</li>
+            </ul>
+        </li>
+        <li>Localizare actuala- PAS-2 in codul JS.
+            <ul>
+                <li>Se face cu asta: myMap.locate({setView: true, maxZoom:16});
+                </li>
+            </ul>
+        </li>
+        <li>Marcator - PAS-3 in codul JS.
+            <ul>
+                <li>Se face cu: var marker = L.marker([latitudine, longitudine]).addTo(myMap);</li>
+            </ul>
+        </li>
+        <li>Setarea marcatorului(ce fel de icon vreau) - PAS-4 in codul JS.
+            <ul>
+                <li>Il scriu defapt inainte de pas-3, pentru ca il setez inainte de al folosi:))</li>
+                <li>Folosesc codul asta:         var myIcon = L.icon({
+                    iconUrl: 'img/2x/icon.png'
+                });
+                </li>
+                <li>Ma intorc la pasul 3, unde e activat marcatorul, si setez acolo variabila myIcon.</li>
+            </ul>
+        </li>
+        <li>Marcare linie intrerupta - PAS-5 in codul JS.</li>
+        <li>Marcare poligon - PAS-6 in codul JS.</li>
+        <li>Definire logica poligon (text cu click pe poligon) - PAS-7 in codul JS.</li>
+        <li>Afisare text cand sunt in cadrul poligonului cu cursorul - PAS-8 in codul JS.</li>
+        <li>Definire logica pentru marcator(icon) PAS-9 in codul JS.</li>
+        <li><span id="red">!!!DEFINIRE COORDONATE</span> vezi PAS-10 in codul JS.</li>
+        <li>Setare butoane sub harta:
+
+        </li>
+    </ol>
+    <div id="map"></div>
+    <div>
+        <button id="zoom-5">Set zoom to 5</button>
+        <button id="zoom-in">Zoom in</button>
+        <button id="zoom-out">Zoom out</button>
+        <button id="belgrade">Go to Belgrade</button>
+        <button id="tokyo">Show Tokyo with zoom 13</button>
+        <button id="athens">Fly to Athens</button>
+
+        
+    </div>
+    <script src="js/leaflet.js"></script>
+    <script>
+    //PAS-1
+        var myMap = L.map('map') /* SPECIFICATII ,{
+            //SPECIFICATII
+            center: [37.974, 23.72],
+            zoom:13,
+            attributionControl: false,
+            zoomControl: false,
+            doubleClickZoom: false,
+            scrollWheelZoom: false,
+            dragging: false,
+            minZoom: 10,
+            maxZoom: 17
+        }); */
+        
+        myMap.setView([37.974, 23.72], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(myMap);
+
+    //PAS-2 LOCALIZARE
+        myMap.locate({setView: true, maxZoom:16});
+    //PAS-4 DEFINIREA ICON-ULUI PENTRU MARCARE
+        var myIcon = L.icon({
+            iconUrl: 'img/2x/icon.png'
+        });
+    //PAS-3 MARCATOR
+        var marker = L.marker([37.974,23.72], {
+            icon: myIcon
+        }).addTo(myMap);
+    //PAS-5 MARCARE LINIE INTRERUPTA
+        var latings=[
+            [38.00729, 23.73508],
+            [37.99992, 23.73328],
+            [38.00084, 23.72757],
+            [37.98917, 23.72671]
+        ];
+        var polyline = L.polyline(latings, {color:'red'}).addTo(myMap);
+    //PAS-6 MARCARE POLIGON
+        var latings2=[
+            [37.99528, 23.73347],
+            [37.99174, 23.73250],
+            [37.99105, 23.73689],
+            [37.99162, 23.73910],
+            [37.99274, 23.74071],
+            [37.99411, 23.74101],
+            [37.99573, 23.74035],
+            [37.99489, 23.73612]
+        ];
+        var polygon = L.polygon(latings2, {color:'blue'}).addTo(myMap);
+        //PAS-7 CLICK IN POLIGON
+        polygon.bindPopup("<b>Hello World!</b><br>I am a polygon!");
+        //PAS-8 TOOLTIP
+        polygon.bindTooltip("Click me!");
+        //PAS-9
+        marker.on("click", function(){
+            alert("You can click me!");
+        });
+        //PAS-10 DEFINIRE COORDONATE
+        myMap.on('click', function (ev) {
+            alert("Coordinates of clicked point is: " + ev.latlng.lat + ", " + ev.latlng.lng);
+        });
+        //PAS-11 BUTOANELE
+            let buttons = document.getElementsByTagName("button");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener("click", function(){
+                    let id = this.id;
+                    switch (id) {
+                        case "zoom-5":
+                            myMap.setZoom(5);
+                            break;
+                        case "zoom-in":
+                            myMap.zoomIn(1);
+                            break;
+                        case "zoom-out":
+                            myMap.zoomOut(1);
+                            break;
+                        case "belgrade": 
+                            myMap.panTo([44.82556, 20.45112]);
+                            break;
+                        case "tokyo":
+                            myMap.setView([35.69033, 139.77343], 13);
+                            break;
+                        case "athens":
+                            myMap.flyTo([37.95232, 23.72346], 15);
+                            break;
+                    }
+                });
+            };
+    </script>
+</body>
+</html>

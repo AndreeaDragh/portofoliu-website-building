@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Selectors Events</title>
+    <style>
+        .red {
+            color: white;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <!--EX-1-->
+    <p class="red">EXEMPLU-1</p>
+    <p>Cautare dupa id (adica cu #).</p>
+    <h1 id="heading-1">This is heading 1.</h1>
+    <!--EX-2 + EX-3-->
+    <p class="red">EXEMPLU-2 + 3</p>
+    <p>Cautare dupa mai multe elemente (adica fara niciun simbol).</p>
+    <p>Cautare dupa clase (adica cu .)</p>
+    <h1 id="heading-2">This is heading 2.</h1>
+    <p class="my-class my-other-class">Paragraph 1</p>
+    <p class="my-class">Paragraph 2</p>
+    <p>Paragraph 3</p>
+    <p>Rezultat: a gasit toate paragrafele scrise in cod. Si in cazul cautarii dupa clasa, a luat in considerare ambele
+        paragrafe.</p>
+    <!--EX-4-->
+    <p class="red">EXEMPLU-4</p>
+    <p>Cautare dupa toate elementele (adica cu *).</p>
+    <!--EX-5-->
+    <p class="red">EXEMPLU-5</p>
+    <p>Cautare dupa primul paragraf din cod (adica cu p:first).</p>
+    <!--EX-6-24-->
+    <p class="red">EXEMPLU-6-24</p>
+    <section id="section-1">
+        <h1 id="heading-section">This is heading from section.</h1>
+        <p class="my-class">Paragraph 1.</p>
+        <p class="my-class">Paragraph 2.</p>
+        <p>Paragraph 3.</p>
+        <ul id="my-list">
+            <li>One.</li>
+            <li>Two.</li>
+            <li>Three.</li>
+        </ul>
+    </section>
+    <p>Rezultat 6: afiseaza primul copil cautat cu comanda li:first-child.</p>
+    <p>Rezultat 7: afiseaza id-ul parintelui care este pentru li:first-child.</p>
+    <p>Rezultat 8: afiseaza toti parintii primului copil. Trebuie sa folosesc each(), this si nodeName.</p>
+    <p>Rezultat 9: afiseaza toti parintii primului copil <strong>pana la body</strong>. Trebuie sa folosesc each(), this
+        si nodeName.</p>
+    <p>Rezultat 10: afiseaza toti copiii dintr-o anumita sectiune.</p>
+    <p>Rezultat 11: afiseaza doar copiii de un anumit tip.</p>
+    <p>Rezultat 12: afiseaza doar copiii specificati in find. Trebuie musai pus parametru la find.</p>
+    <p>Rezultat 13: afiseaza rudele elementului ul prin "siblings".</p>
+    <p>Rezultat 14: afiseaza urmatoarea prima-ruda a lui 'heading-section'.</p>
+    <p>Rezultat 15: afiseaza toate rudele urmatoare ale lui 'heading-section'.</p>
+    <p>Rezultat 16: afiseaza toate rudele urmatoare ale lui 'heading-section' pana la UL.</p>
+    <p>Rezultat 17/18/19: afiseaza rudele precendente. 17-doar primul precendent, 18-toate, 19-toate pana la un anumit..
+    </p>
+    <p>Rezultat 20-24: afiseaza prin introducerea unei noi propietati dupa .children() de ex, urmatoarele:
+        first(prima-ruda),
+        last(ultima-ruda), filter("" trebuie musai parametru, filtreaza ce vreau eu), eq("" parametru numeric,
+        primul=0),
+        not(daca vreau sa exclud o anumita clasa sau grup).
+    </p>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        //EX-1
+        let heading = $("#heading-1");
+        console.log(heading.text());
+        //EX-2 
+        let heading2 = $("p");
+        console.log(heading2.length);
+        //EX-3
+        let heading3 = $(".my-class");
+        console.log(heading3.length);
+        //EX-4
+        let heading4 = $("*");
+        console.log("Cu * avem: " + heading4.length + " elemente");
+        //EX-5
+        let heading5 = $("p:first");
+        console.log("Primul paragraf este: " + heading5.text());
+        //EX-6
+        let heading6 = $("li:first-child");
+        console.log("Primul copil: " + heading6.text());
+        //EX-7
+        let heading7 = $("li:first-child").parent();
+        console.log("Id-ul parintelui primului copil este: " + heading7.attr("id"));
+        //EX-8 
+        let heading8 = $("li:first-child").parents();
+        heading8.each(function () {
+            console.log("Acestia sunt parintii primului li: " + $(this).prop("nodeName"));
+        });
+        //EX-9
+        let heading9 = jQuery("li:first-child").parentsUntil("body");
+        heading9.each(function () {
+            console.log("Acestia sunt parintii primului li pana la body: " + $(this).prop("nodeName"));
+        });
+        //EX-10
+        let heading10 = $("#section-1").children();
+        heading10.each(function () {
+            console.log("Acestia sunt copiii elementului section: " + this.nodeName);
+        });
+        //EX-11
+        let heading11 = $("#section-1").children("p");
+        heading11.each(function () {
+            console.log("Acestia sunt copiii doar de tip 'p': " + this.nodeName);
+        });
+        //EX-12
+        let heading12 = $("#section-1").find("li");
+        heading12.each(function () {
+            console.log("Cu 'find' gaseste doar elementele de tip-parametru, adica 3xli: " + this.nodeName);
+        });
+        //EX-13 ELEMENTE INRUDITE
+        let heading13 = $("#my-list").siblings();
+        heading13.each(function () {
+            console.log("Acestea sunt rudele parintelui cu id-ul 'my-list': " + this.nodeName);
+        });
+        //EX-14 ELEMENTE INRUDITE
+        let heading14 = $("#heading-section").next();
+        heading14.each(function () {
+            console.log("Aceasta este urmatoarea ruda a lui heading-section " + this.nodeName);
+        });
+        //EX-15 ELEMENTE INRUDITE
+        let heading15 = $("#heading-section").nextAll();
+        heading15.each(function () {
+            console.log("Acestea sunt urmatoarele rude a lui heading-section:  " + this.nodeName);
+        });
+        //EX-16 ELEMENTE INRUDITE
+        let heading16 = $("#heading-section").nextUntil("ul");
+        heading16.each(function () {
+            console.log("Acestea sunt urmatoarele rude a lui heading-section pana la ul: " + this.nodeName);
+        });
+        //EX-17
+        let heading17 = $("#my-list").prev();
+        heading17.each(function () {
+            console.log("Acesta este elementul precedent lui 'ul': " + this.nodeName);
+        });
+        //EX-18
+        let heading18 = $("#my-list").prevAll();
+        heading18.each(function () {
+            console.log("Acestea sunt toate elementele precendente lui 'ul': " + this.nodeName);
+        });
+        //EX-19
+        let heading19 = $("#my-list").prevUntil("h1");
+        heading19.each(function () {
+            console.log("Acestea sunt elementele precentede lui 'ul' pana la h1: " + this.nodeName);
+        });
+        //EX-20 FILTRAREA SI SELECTAREA ELEMENTELOR
+        let heading20 = $("#section-1").children().first();
+        heading20.each(function () {
+            console.log("Primul element-copil a lui section-1: " + this.nodeName);
+        });
+        //EX-21
+        let heading21 = $("#section-1").children().last();
+        heading21.each(function () {
+            console.log("Ultimul element-copil a lui section-1: " + this.nodeName);
+        });
+        //EX-22
+        let heading22 = $("#section-1").children().eq(1);
+        heading22.each(function () {
+            console.log("Al doilea (sau numeric) element-copil a lui section-1: " + $(this).text());
+        });
+        //EX-23
+        let heading23 = $("#section-1").children().filter("p");
+        heading23.each(function () {
+            console.log("Filtrarea si afisarea elementelor din section-1 de tip 'p': " + $(this).text());
+        });
+        //EX-24
+        let heading24 = $("#section-1").children().not("p");
+        heading24.each(function () {
+            console.log("Excluderea din section-1 a paragrafelor: " + this.nodeName);
+        });
+        //EX-25
+        /*$(document).ready(function(){
+            $("#my-button").click(function(){
+            alert("Pentru ca am impachetat in chestia cu document+ready, chiar daca am buttonul format dupa script va functiona! Poftiti la cafeluta!:)");
+        });                                 
+        }); */
+        /* let button = document.getElementById("my-button");
+        button.addEventListener("click", function(){                //E ACELASI LUCRU CA CODUL DE MAI SUS, dar fara document
+            alert("You clicked me!")
+        }); */
+
+        $(document).ready(function () {
+            $("#my-button").on("click", function () {
+                alert("Pentru ca am impachetat in chestia cu document+ready, chiar daca am buttonul format dupa script va functiona! Poftiti la cafeluta!:)");
+                $(this).off();  //sau pot sa sterg randul asta, si in loc de on scriu one...si are acelasi efect.
+            });
+            //EXEMPLU - metoda on cu abonarea la eveniment
+            /*  $("#my-button").on({
+                  mouseenter: function() {
+                      console.log("mouse entered the button.");
+                  },
+                  mouseleave: function() {
+                      console.log("mouse left button.");
+                  }, 
+                  click: function() {
+                      console.log("button clicked.")
+                  }               
+              });   */
+        });
+
+    </script>
+    <!--EX-25-->
+    <p class="red">EXEMPLU-25</p>
+    <button id="my-button">Supriza!!!</button>
+    <p>Rezultat: E un buton cu rezultat alert, si am folosit the method which is called "on" si cu abonare la eveniment,
+        prin care ma lasa sa dau o singura data click, pentru ca am dezactivat dupa cu off. Acelasi rezultat reiese si
+        daca
+        in loc de on/off folosesc doar one in cod. Am in codul js pus in comentariu un exemplu putin mai complex.
+    </p>
+
+</body>;
+
+</html>

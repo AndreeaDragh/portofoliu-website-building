@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Grid 2</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+     <style>
+         .col-3{
+             background-color: turquoise;
+             border: 1px solid black;
+         }
+     </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-between vh-100">       <!--merge cu j-c-start/end/center/around/between-->
+            <div class="col-3 align-self-start">   <!--daca pun stretch se vede pe tot campul vizual pe verticala-->                            
+                .col-3
+            </div>
+            <div class="col-3 align-self-center">
+                .col-3
+            </div>
+            <div class="col-3 align-self-end">
+                .col-3 
+            </div>
+        </div>
+        <br>
+        <div class="row">      
+            <div class="col-4 order-md-2">                             
+                1st in html
+            </div>
+            <div class="col-4 order-md-1">
+                2nd in html
+            </div>
+            <div class="col-4">
+                3rd in html 
+            </div>
+        </div>
+            <br>
+            <br>
+            <div class="row">      
+                <div class="col-2 offset-xl-1 offset-md-2">                             
+                    .col-2
+                </div>
+                <div class="col-2 offset-xl-2 offset-md-1">
+                   .col-2
+                </div>
+                <div class="col-2 offset-3">
+                    .col-2 
+                </div>
+            </div>
+            <br>
+            <div class="row">      
+                <div class="col-4 d-none d-md-block">          <!--asa fac sa dispara prima coloana-->                   
+                    .col-4
+                </div>
+                <div class="col-4">
+                   .col-4
+                </div>
+                <div class="col-4">
+                    .col-4
+                </div>
+            </div>
+            <br>
+            <!--layout complex-->
+            <div class="row">      
+                <div class="col-8">                             
+                    1st column
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <div class="col-4">A</div>
+                        <div class="col-4">B</div>
+                        <div class="col-4">C</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">D</div>
+                        <div class="col-4">E</div>
+                        <div class="col-4">F</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    2nd column
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/jquery-3.6.0.slim.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

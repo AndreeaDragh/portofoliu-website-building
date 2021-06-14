@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap - Document Object Model</title>
+    <style>
+        .red-text{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>MODELUL OBIECTUAL AL DOCUMENTELOR</h1>
+    <!--EX-1 este facut direct in script. El modifica numele tab-ului sus in browser-->
+    <p>Exemplul 1 este facut direct in script. Modifica numele tab-ului din browser.</p>
+    <!--EX-2-->
+    <p>Exemplul 2.</p>
+    <div id="div-1">
+        <p id="p-1">Text 1</p>
+        <p id="p-2">Text 2</p>
+        <p>Text 3</p>
+    </div>
+    <p>Rezultat: am folosit "getElementById" si am dat sa afiseze rezultatul sub forma alert() in casuta care apare
+        sus cand dau refresh la pagina. "getElementById" cauta elementul dupa "id"
+    </p>
+    <br><br>Exemplul 3(ca sa vad rezultatul du-te in consola)<br>
+    <!--EX-3-->
+    <p id="my-class">Text 1</p>
+    <p class="my-class">Text 2</p>
+    <p class="my-class some-other-class">Text 3</p>
+    <p>Text 4</p>
+    <p>Text 5</p>
+    <p class="your-class">Text 6</p>
+    <p>Rezultat: Am folosit "getElementsByClassName" si am cautat dupa clasa "my-class". A cuprins si paragraful
+        Text-2, si paragraful Text-3 pentru ca ambele aveau clasa asta. Rezultatul l-a afisat in consola.
+    </p>
+    <!--EX-4-->
+    <br><br>Exemplul 4(ca sa vad rezultatul du-te in consola)<br>
+    <ul>
+        <li>Item 1</li>
+        <li id="my-id">Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <p> Rezultat: am folosit "getElementsByTagName" si am cautat dupa "li". Rezultatul l-a afisat in consola si apare numarul 
+        de elemente "li" pentru ca asa am pus acolo (items.length). ==> 3 elemente
+    </p>
+    <br><br>
+    <p>Exemplul 5</p>
+    <p>Pe baza listei de mai sus cu item-uri, la al doilea "li" am adaugat id-ul "my-class", si as fi putut sa caut cu
+        document.getElementById, dar folosesc o metoda noua adica <strong>document.querySelector</strong> si i-am dat 
+        sa afiseze rezultatul in consola scriind inner.HTML. <br>
+        !!!<strong>Atentie!!!</strong> document.querySelector se foloseste pentru a afisa primul element din seria lui
+        (in exemplu am folosit dupa id, dar daca puneam pur si simplu "li", atunci ar fi afisat Item 1. La fel de <strong>
+            important </strong> este sa pun eticheta corespunzatoare (gen: daca folosesc selectia dupa "id" in paranteaza
+            sa nu omit sa pun cu hashtag #my-id)
+    </p>
+    <br><br>
+    <p>Exemplul 6</p>
+    <p>Am folosit <strong>document.querySelectorAll</strong> si selecteaza toate elementele de acel tip (in cazul meu
+        am ales sa caute dupa "li". Rezultatul e in consola si i-am dat sa afiseze numarul de elemente gasite.</p>
+    <br><br>
+
+
+    <h1>MODIFICAREA ELEMENTELOR INCORPORATE IN HTML</h1>
+
+
+    <!--2.EX-1-->
+        <p>2.EXEMPLU-1</p>
+        <p id="the-paragraph" class="my-class">Text 1</p>
+        <p>Rezultat: am cautat dupa id cu document.getElementById, i-am dat sa il afiseze in consola si am mai adaugat niste
+            text inaintea lui, iar dupa ca sa modifice continutul pentru ca initial era Text-1, am scris in script paragraph.innerHTML = "" ,
+            si i-am dat o noua valoare, si in browser a modificat-o (dar in consola e afisat tot Text-1)
+        </p>
+    <!--2.EX-2-->
+        <p>2.EXEMPLU-2</p>
+        <p>Pe baza modelului de mai sus, am mai adaugat pe langa id o clasa, dupa care am scris in script sa afiseze in 
+            consola "id:" + paragraph.id si inca odata "class: " + paragraph.className , ca sa afiseze in consola tipul
+            acestora.
+        </p>
+    <!--2.EX-3-->
+        <p>2.EXEMPLU-3</p>
+        <input type="text" name="firstname" id="first-name" value="I want to be a button!">
+        <p>Rezultat: am un element de tip input, si din text vreau sa il transform in buton. <br> Il caut dupa id, dupa care 
+            pun "input.setAttribute=("type -ca acolo se gaseste val de vreau sa o schimb", "button");
+        </p>
+    <!--2.EX-4-->
+        <p>2.EXEMPLU-4</p>
+        <p id="colorare-paragraph" class="my-class">Am modificat textul in culoare albastra.</p>
+        <p>Rezultat: Caut dupa id, dupa care pun comanda: "paragraph2.style.color = "culoarea", pentru a schimba. <br> 
+        <strong>Atentie!!</strong> am pus paragraph2 pentru ca pun numele variabilei stabilite la exemplul asta.</p>
+    <!--2.EX-5-->
+        <p>2.EXEMPLU-5</p>
+        <p id="colorare-paragraph3" class="my-class">Am modificat textul in culoare rosie cu ajutorul css.</p>
+        <p>Rezultat: am adaugat in primul rand o clasa in css si am stabilit culoarea rosie. <br> Dupa care am cautat propozitia
+        dupa id, si pun comanda: "paragraph3.classList.add("numele clasei din CSS"). Si asa va colora textul in rosu.</p>
+    <!--2.EX-6-->
+        <p>2.EXEMPLU-6</p>
+        <p id="colorare-paragraph4" class="my-class red-text">Am sters scrisul rosu care era stabilit.</p>
+        <p>Rezultat: La fel ca si la exemplul anterior, se presupune ca in cod deja am clasa stabilita "red-text". <br>
+            Trebubie sa pun comanda: "paragraph4.classList.<strong>remove</strong>("red-text"); si gata</p> <br><br>
+
+    
+    <h1>ADAUGAREA SI STERGEREA ELEMENTELOR</h1>
+
+
+    <!--3.EX-1-->
+        <p>3.EXEMPLU-1</p>
+        <p id="colorare-paragraph5" class="my-class red-text">Non-dynamic paragraph.</p>
+        <p>Rezultat: Ca sa adaug un nou element trebuie sa urmez pasii urmatori: <br>
+            1.var newParagraph = document.createElement("p"); ca sa ii spun ce fel de element sa fie (p) <br>
+            2.var newContent = document.createTextNode("This is dynamically generated paragraph!") creez un nod si scriu continutul. <br>
+            3.newParagraph.appendChild(newContent); leg noua propozie de paragraful creat la primul pas. <br>
+            4.document.body.appendChild(newParagraph); afisez in body. 
+        </p>
+        <p class="red-text">Am pus scriptul in comentariu, pentru ca elementul nou creat, va ramane mereu in josul paginii,
+            si m-ar incurca in alte exemple. <br>
+            Update! L-am lasat si am explicat acolo.
+        </p>
+    <!--3.EX-2-->
+            <p>3.EXEMPLU-2</p>
+            <p id="paragraph6" class="my-class">Non-dynamic paragraph.</p>
+    <!--3.EX-3-->
+            <p>3.EXEMPLU-3</p>
+            <ul id="my-list">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+            <p>Rezultat: identificam cu id-ul, dupa care scriem sintagma list.removeChild(list.children[1]); si am
+                pus 1 pentru ca numerotarea incepe de la 0.
+            </p>
+    <!--3.EX-4-->
+            <p>3.EXEMPLU-4</p>
+            <p id="paragraph7" class="my-class">Non-dynamic paragraph.</p>
+            <p>Rezultat: folosim exact aceeasi tehnica ca la mutare, doar ca pun sintagma document.body.replaceChild(newParagraph3, oldParagraph2)
+                in loc de cea cu insertBefore:).
+            </p>
+
+
+    <script>
+    //EX-1
+        document.title = "Nume modificat" //sus, la numele tab-ului
+    //EX-2
+        var paragraph = document.getElementById('p-1');
+        alert(paragraph.innerHTML);
+    //EX-3
+        var paragraphs = document.getElementsByClassName("my-class");
+        for(let i = 0; i < paragraphs.length; i++) {
+            console.log(paragraphs[i].innerHTML);
+        }
+    //EX-4
+        var items = document.getElementsByTagName("li");
+        console.log(items.length);
+    //EX-5
+        var item = document.querySelector("#my-id");
+        console.log(item.innerHTML);
+    //EX-6
+        var items = document.querySelectorAll("li");
+        console.log(items.length);
+
+
+    //2.EX-1 Modificarea textului 
+        var paragraph = document.getElementById("the-paragraph");
+        console.log("Original paragraph content was: " + paragraph.innerHTML);
+        paragraph.innerHTML = "New text set using innerHTML property."
+    //2.EX-2 Citirea atributului
+        var paragraph = document.getElementById("the-paragraph");
+        console.log("ID: " + paragraph.id);
+        console.log("Class: " + paragraph.className);
+    //2.EX-3 Modificarea atributului
+        var input = document.getElementById("first-name");
+        input.setAttribute("type","button");
+    //2.EX-4 Stilizarea textului cu JS
+        var paragraph2 = document.getElementById("colorare-paragraph");
+        paragraph2.style.color = "blue";
+    //2.EX-5 Stilizarea textului prin clase cu ajutorul CSS
+        var paragraph3 = document.getElementById("colorare-paragraph3");
+        paragraph3.classList.add("red-text");
+    //2.EX-6 Stergerea unei clase de stilizare
+        var paragraph4 = document.getElementById("colorare-paragraph4");
+        paragraph4.classList.remove("red-text");
+
+    //.EX-1 Adaugarea elementelor
+        var newParagraph = document.createElement("p");
+        var newContent = document.createTextNode("EXEMPLU-1 !!! This is dynamically generated paragraph! Este exemplul de la EXEMPLU-1, dar cand adaugi un element nou, il plaseaza mereu in josul paginii.")
+        newParagraph.appendChild(newContent); //ASTA TREBUIE SA FOLOSESC CAND VREAU SA ADAUG, DAR IL LASA IN JOSUL PAGINII
+        document.body.appendChild(newParagraph);
+    //3.EX-2 Mutarea elementelor
+        var newParagraph2 = document.createElement("p");
+        var newContent2 = document.createTextNode("Propozitia care se muta deasupra celei cu non-dynamically paragraph.")
+        newParagraph2.appendChild(newContent2);
+
+        var oldParagraph = document.getElementById("paragraph6");
+        document.body.insertBefore(newParagraph2, oldParagraph);
+    //3.EX-3 Eliminarea elementelor din structura
+        var list = document.getElementById("my-list");
+        list.removeChild(list.children[1]);
+    //3.EX-4 Inlocuirea elementelor html
+        var newParagraph3 = document.createElement("p");
+        var newContent3 = document.createTextNode("Propozitia asta inlocuieste propozitia scrisa in body.")
+        newParagraph3.appendChild(newContent3);
+
+        var oldParagraph2 = document.getElementById("paragraph7");
+        document.body.replaceChild(newParagraph3, oldParagraph2)
+
+    
+   
+    </script>
+</body>
+</html>

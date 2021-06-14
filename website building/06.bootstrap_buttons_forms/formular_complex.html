@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Buttons Form</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        #form-container{
+            width: 640px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!--formular clasic-->
+    <h1>Formulare</h1>
+    <div id="form-container">
+    <form>
+        <div class="row">      <!--el in lectie a pus form-row, dar mie nu imi merge!!!-->
+            <div class="col-lg-2 col-sm-4">
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <div>
+                        <div class="form-check-inline">
+                        <input class="form-check-input" name="gender" type="radio" id="male" value="male" checked="checked">
+                        <label class="form-check-label" for="male">Mr</label>
+                        </div>
+                        <div class="form-check-inline">
+                        <input class="form-check-input" name="gender" type="radio" id="female" value="female">
+                        <label class="form-check-label" for="female">Mrs</label>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+            <div class="col-lg-5 col-sm-8">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input class="form-control" type="text" id="name" name="name">
+                </div>        
+            </div>
+            <div class="col-lg-5 col-sm-12">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input class="form-control" type="email" id="email" name="email">
+                </div>        
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input class="form-control" type="text" id="address" name="address">
+        </div>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select class="form-control" name="country" id="country">
+                <option value="Serbia">Serbia</option>
+                <option value="Romania" selected="selected">Romania</option>
+                <option value="Ungaria">Ungaria</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" name="comment" id="comment">Lorem ipsum...</textarea>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="newsletter" value="yes" id="newsletter">
+            <label class="form-check-label" for="newsletter">I would like to receive newsletter.</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Send</button>
+    </form>
+    </div>
+    <!--
+        STILIZARE FORMULAR CU BOOTSTRAP
+        1.pun clasa="form-control" la toate elementele care sunt cu input, select si textarea
+        2.grupez elementele label cu restul (pe fiecare div pun clasa="form-group")
+        *.nu pun clasele form pentru elementele checkbox+radio+button pentru ca se face diferit.
+        3.la radio+checkbox pun pe elementul input clasa="form-check-input" si pe label clasa="form-check-label" 
+        si le grupez cu clasa pe div="form-check"
+        4.la button stilizez cu clasa btn ca in restul cursului
+    -->
+
+
+
+
+    <script src="js/jquery-3.6.0.slim.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

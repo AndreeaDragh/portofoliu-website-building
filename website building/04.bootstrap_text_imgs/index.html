@@ -1,0 +1,83 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bootstrap text and images</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+        <h1>h1.Heading-2.5rem</h1>
+        <p class="h1">This is like heading text</p>
+        <h2>h2.Heading-2rem</h2>
+        <h3>h3.Heading-1.75rem</h3>
+        <h4>h4.Heading-1.5rem</h4>
+        <h5>h5.Heading-1.25rem</h5>
+        <h6>h6.Heading-1rem</h6>
+        <br>
+        <h1>This is heading
+            <small class="text-muted">Heading secondary text</small>
+        </h1>
+        <br>
+        <h1 class="display-1">Display 1</h1>
+        <h1 class="display-2">Display 2</h1>
+        <h1 class="display-3">Display 3</h1>
+        <h1 class="display-4">Display 4</h1>
+        <br>
+        <p>Morbi molestie lobortis diam. Cras varius, justo at tincidunt gravida, magna augue fringilla mi, ut ornare nunc 
+        nunc nec elit. - paragraf normal</p>
+        <p class="lead">Morbi molestie lobortis diam. Cras varius, justo at tincidunt gravida, magna augue fringilla mi, ut ornare nunc 
+            nunc nec elit. - paragraf dragut</p>
+        <br>
+        <p>This is regular paragraph text. This text is highlighted.</p>
+        <p><del>This is deleted text.</del></p>
+        <p><s>This text is no longer accurate.</s></p>
+        <p><ins>This text is an addition to the document.</ins></p>
+        <p><u>This is underlined text.</u></p>
+        <p>This is regular paragraph text. <small>This text is smaller.</small></p>
+        <p>This is regular paragraph text. <strong>This text is emphasized using bold.</strong></p>
+        <p>This is regular paragraph text.<em>This is italicized text.</em></p>
+        <br>
+        <p>This is regular paragraph text. <span class="mark">This text is highlighted.</span> </p>
+        <p>This is regular paragraph text. <span class="small"> This text is smaller.</span></p>
+        <p class="text-monospace">This is monospace text.</p>
+        <p class="text-lowercase">this text is transformed using .text-lowercase class.</p>
+        <p class="text-uppercase">THIS TEXT IS TRANSFORMED USING .TEXT-UPPERCASE CLASS.</p>
+        <p class="text-capitalize">This TEXT Is Transformed Using .Text-Uppercase Class.</p>   
+        <a href="#" class="text-decoration-none">This link is transformed using .text-decoration-none class</a>
+        <br>
+        <br> <!--citat-->
+        <blockquote class="blockquoate">
+            <p>Mauris et mauris ligula. Nullam ante metus, tempor et facilisis laoreet, porta in nisl. Proin sagittis 
+                nunc ut erat ultrices hendrerit.</p>
+                <footer class="blockquote">Taken from: <cite>Lorem Ipsum</cite> </footer>
+        </blockquote>
+
+        <br>
+        <!--imagini-->
+        <img src="img/20191009140007-GettyImages-1053962188.jpeg" alt="image" class="img-fluid rounded">
+        <img src="img/20191009140007-GettyImages-1053962188.jpeg" alt="image" class="img-fluid rounded-circle">
+        <img src="img/20191009140007-GettyImages-1053962188.jpeg" alt="image" class="img-fluid img-thumbnail">
+        <!--alinierea textului-->
+        <br>
+        <p class="text-center">Mauris et mauris ligula. Nullam ante metus, tempor et facilisis laoreet, porta in nisl. Proin sagittis 
+            nunc ut erat ultrices hendrerit.</p>
+        <br>
+        <!--alinierea imaginilor
+            nu pot sa pun clasa text-center direct pe img, trebuie sa impachetez imaginea intr-un div si pun clasa acolo
+            SAU
+            daca un vreau clasa div, transform imaginea intr-un element block si modific marginile care pot fi:
+                mr/ml/mx-auto                                                                                   -->
+            <div class="text-center">
+                <img src="img/20191009140007-GettyImages-1053962188.jpeg" alt="image" class="img-fluid img-thumbnail">
+            </div>
+            <br>
+            <img  src="img/20191009140007-GettyImages-1053962188.jpeg" class="img-fluid d-block mx-auto" alt="image">
+
+
+
+
+        <script src="js/jquery-3.6.0.slim.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>

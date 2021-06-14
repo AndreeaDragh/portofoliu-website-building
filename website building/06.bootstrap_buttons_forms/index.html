@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Buttons Form</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        #form-container{
+            width: 640px;
+            margin:0 auto;
+        }
+        /*
+
+        !!!ASTA E O STILIZARE FACUTA DOAR CU CSS. #form-container-ul de mai sus pot sa il pastrez pt ca nu ma influenteaza la nimic.
+
+        input[type-text],               elementele de tip text, email, select si textarea ocupa lungimea completa in cadrul parintelui lor
+        input[type-email],
+        select,
+        textarea {
+            width: 100%;
+        }
+        form>div {                      /*div-urile sa aiba o margine frumoasa
+            margin: 16px 0 16px 0px;
+        }
+        form>div>label {                /*elementele care sunt cu label sa fie bolduite
+            font-weight: bold;
+        }
+        /*dupa asta am stabilit sa fac impachetez tot formularul intr-un div cu id="form-container" pe care il stilizez aici*/
+        
+    </style>
+</head>
+<body>
+    <h1>Liste</h1>
+    <p><strong>Astea sunt culorile disponibile cu clasa (btn-*culoarea*):</strong></p>
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-light">Light</button>
+    <button type="button" class="btn btn-dark">Dark</button>
+    <button type="button" class="btn btn-link">Link</button>
+    <br>
+    <br>
+    <p><strong>Astea sunt butoane fara umplere cu clasa (btn-outline-*culoarea*):</strong></p>
+    <button type="button" class="btn btn-outline-primary">Primary</button>
+    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+    <button type="button" class="btn btn-outline-success">Success</button>
+    <button type="button" class="btn btn-outline-danger">Danger</button>
+    <button type="button" class="btn btn-outline-warning">Warning</button>
+    <button type="button" class="btn btn-outline-info">Info</button>
+    <button type="button" class="btn btn-outline-light">Light</button>
+    <button type="button" class="btn btn-outline-dark">Dark</button>
+    <button type="button" class="btn btn-outline-link">Link</button>
+    <br><br>
+    <p><strong>Dimensiunea butoanelor se poate modifica cu btn-sm sau btn-lg:</strong></p>
+    <button type="button" class="btn btn-primary btn-sm">Small button</button>
+    <button type="button" class="btn btn-primary">Default button</button>
+    <button type="button" class="btn btn-primary btn-lg">Large button</button>
+    <br><br>
+    <p><strong>Dezactivarea butoanelor se poate face cu disabled:</strong></p>
+    <button type="button" class="btn btn-primary">Default button</button>
+    <button type="button" class="btn btn-primary" disabled>Disabled button</button>
+    <br><br>
+    <p><strong>Pot face butoane-link si cu elementul "a" si cu aceleasi clase, dar nu merge sa pun disabled simplu ca la 
+        elementul "button", trebuie sa setez disabled in clasa "btn" si e bine sa pun si tabindex="-1" si atributul 
+        role+area-disabled:</strong></p>
+    <a href="#" class="btn btn-primary">Primary Link</a>
+    <a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" area-disabled="true">Disabled Primary Link</a>
+    <br><br>
+    <p><strong>Pot pune propietatea "block" ca sa ocupe cadrul parintelui sau (tot cu ajutorul elementului "a"):</strong></p>
+    <a href="#" class="btn btn-primary btn-block">Block button</a>
+    <br><br>
+    <!--formular clasic-->
+    <h1>Formulare</h1>
+    <div id="form-container">
+    <form>
+        <div class="form-group">
+            <label>Gender:</label>
+            <div class="form-check">
+                <input class="form-check-input" name="gender" type="radio" id="male" value="male" checked="checked">
+                <label class="form-check-label" for="male">Mr</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" name="gender" type="radio" id="female" value="female">
+                <label class="form-check-label" for="female">Mrs</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="gender" type="radio" id="male" value="male" checked="checked">
+                <label class="form-check-label" for="male">Mr</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="gender" type="radio" id="female" value="female">
+                <label class="form-check-label" for="female">Mrs(ca sa vad cum sunt pe orizontala)</label>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input class="form-control" type="text" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input class="form-control" type="email" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input class="form-control" type="text" id="address" name="address">
+        </div>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select class="form-control" name="country" id="country">
+                <option value="Serbia">Serbia</option>
+                <option value="Romania" selected="selected">Romania</option>
+                <option value="Ungaria">Ungaria</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" name="comment" id="comment">Lorem ipsum...</textarea>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="newsletter" value="yes" id="newsletter">
+            <label class="form-check-label" for="newsletter">I would like to receive newsletter.</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Send</button>
+    </form>
+    </div>
+    <!--
+        STILIZARE FORMULAR CU BOOTSTRAP
+        1.pun clasa="form-control" la toate elementele care sunt cu input, select si textarea
+        2.grupez elementele label cu restul (pe fiecare div pun clasa="form-group")
+        *.nu pun clasele form pentru elementele checkbox+radio+button pentru ca se face diferit.
+        3.la radio+checkbox pun pe elementul input clasa="form-check-input" si pe label clasa="form-check-label" 
+        si le grupez cu clasa pe div="form-check"
+        4.la button stilizez cu clasa btn ca in restul cursului
+    -->
+
+
+
+
+    <script src="js/jquery-3.6.0.slim.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
